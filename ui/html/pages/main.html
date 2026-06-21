@@ -1,0 +1,52 @@
+
+{{define "searchbar"}} {{end}}
+
+{{define "Title"}} Kineta Site{{end}}
+
+{{define "main"}} 
+
+<div class="maincontainer">
+
+
+
+<div class="sidebar" id="sidebar">
+
+   <form method="get" action="/search">
+      <input type="text" name="q" placeholder="Search users..." minlength="3" required>
+      <button type="submit">Search</button>
+
+   </form>
+
+</div>
+
+{{if .Posts}}
+<div class="posts">
+   {{range .Posts}}
+   <div class="post">
+         <a href="/users/{{.Userid}}"> {{.UserName}}</a> ⭐{{.Rating}}<a href="/posts/{{.Id}}"> <p class="title">{{.TiTle}}</p></a>
+      <div class="image">
+         {{if .Imageurl}}
+            <img src="{{.Imageurl}}" alt="Post Image" class="post-image">
+            {{else}}
+            <p>NO image url here --- {{.Imageurl}}</p>
+            {{end}}
+      </div>
+       <p class="content">{{.Content}}</p>
+   </div>   
+      
+        {{end}}
+    {{else}}
+       <p> NO Posts FOUND</p>
+       {{end}}
+      </div>
+
+     <div class="sidebarad">
+            <img src="https://i.ibb.co/ds96rXSn/image-85194c95.png">
+     </div> 
+      </div>
+
+
+
+
+
+{{end}}

@@ -1,0 +1,30 @@
+{{define "Title"}}Users post{{end}}
+
+{{define "main"}}
+
+{{if .Posts}} 
+     {{range .Posts}}
+  
+     <table>
+          <tr><th>
+               Title
+          </th>
+          <th>
+               Date
+          </th>
+     </tr>
+
+     <tr>
+          <td class="thtitle"><a href="/posts/{{.Id}}">{{.TiTle}}</a></td>
+          <td>{{humandate .Createdat}}</td>
+     </tr>
+          
+     </table>
+   
+     {{end}}
+     {{else}}
+     <p> NO posts from user</p>
+     {{end}}
+
+
+{{end}}

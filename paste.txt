@@ -1,0 +1,13 @@
+ <form   action="/rating/posts/{{.Post.Id}}" method="post" class="rating">
+                    {{with .Rating.FieldErrors.rating}}
+                    <p class="error">{{.}}</p>
+                    {{end}}
+                <select name="rating">
+                    <option value="choose">Rate</option>
+                    <option value="1" {{if eq .Rating.Rating 1}}selected{{end}}>1</option>
+                    The hidden type is: {{ printf "%T" .Rating }}
+                    <option value="2" {{if eq .Rating.Rating 2}}selected{{end}}>2</option>
+                    <option value="3" {{if eq .Rating.Rating 3}}selected{{end}}>3</option>
+                    <option value="4" {{if eq .Rating.Rating 4}}selected{{end}}>4</option>
+                    <option value="5" {{if eq .Rating.Rating 5}}selected{{end}}>5</option>
+                </select>

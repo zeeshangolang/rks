@@ -1,0 +1,22 @@
+{{define "searchbar"}} {{end}}
+{{define "Title"}}Login{{end}}
+{{define "main"}} 
+
+<form method="post" action="/user/login" class="signup">
+    {{range .Form.NonFieldError}}
+    <p class="error">{{.}}</p>
+    {{end}}
+    <label>Email :</label>
+    {{with .Form.FieldErrors.email}}
+    <p class="error">{{.}}</p>
+    {{end}}
+    <input type="email" name="email" placeholder="email" value="{{.Form.Email}}">
+    <label>Password</label>
+    {{with .Form.FieldErrors.password}}
+    <p class="error">{{.}}</p>
+    {{end}}
+    <input type="text" name="password" placeholder="password">
+    <button type="submit">Login</button>
+</form>
+
+{{end}}

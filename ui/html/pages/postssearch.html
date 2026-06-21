@@ -1,0 +1,18 @@
+
+{{define "Title"}}Search Results{{end}}
+{{define "main"}}
+
+<div class="searchresults">
+
+
+{{if .Posts}}
+    {{range .Posts}}
+
+      <p><a href="/posts/{{.Id}}">{{.TiTle}}</a></p>
+    {{end}}
+{{else}}
+    <p>No Results 😥. search something else</p>
+    {{end}}
+{{end}}
+
+</div>

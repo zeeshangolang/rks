@@ -1,0 +1,31 @@
+{{define "base"}}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./static/styles/main.css">
+    <script src="https://unpkg.com/htmx.org@1.9.12"></script>
+    <link rel="stylesheet" href="/static/styles/main.css">
+    <link rel="icon" href="https://i.ibb.co/LX8nd4rg/socialyze.png" type="image/x-icon">
+    <style>
+        /* Your styles here */
+    </style>
+    <title> {{template "Title" .}} </title>
+</head>
+<body>
+    {{if .ShowNav}}
+    {{template "nav" .}}
+    {{end}}
+    {{if .ShowSearcbar}}
+    
+            {{template "searchbar" .}}
+    {{end}}
+    <!-- Your content here -->
+    {{template "main" .}}
+</body>
+<script src="./static/js/main.js"></script>
+</html>
+
+{{end}}

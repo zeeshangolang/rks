@@ -1,0 +1,32 @@
+{{define "searchbar"}} {{end}}
+{{define "Title"}}Signup{{end}}
+{{define "main"}}
+
+   <form method="post" action="/signup" class="signup">
+     {{range .Form.NonFieldError}}
+   
+     <p class="error">{{.}}</p> 
+     
+      {{end}}
+      {{with .Form.FieldErrors.name}}
+      <p class="error">{{.}}</p>
+      {{end}}
+    <label>Name</label>
+    <input type="text" name="name" placeholder="name" value="{{.Form.Name}}">
+    {{with .Form.FieldErrors.email}}
+    <p class="error">{{.}}</p>
+    {{end}}
+
+    <label>Email</label>
+    <input type="email" name="email" placeholder="email" value="{{.Form.Email}}">
+    {{with .Form.FieldErrors.password}}
+   <p class="error">{{.}}</p>
+    {{end}}
+    <label>Password</label>
+    <input type="text" name="password" placeholder="password">
+
+    <button type="submit">SIGN UP</button>
+   </form>
+
+  
+{{end}}

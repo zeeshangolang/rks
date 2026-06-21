@@ -1,0 +1,65 @@
+{{define "Title"}}{{.Post.TiTle}}{{end}}
+
+
+{{define  "main"}}
+
+<div class="postpage">
+<h3>{{.Post.UserName}}</h3>
+        
+             {{if and .IsAuthenticated .IsActivated}}
+             {{if .HasRated}}
+             <p>you rated </p>
+          
+                {{else}} 
+                
+            <form method="post" action="/rating/posts/{{.Post.Id}}" class="ratingform">
+                 <select class="rating" name="Rating">
+                    
+                    <option value="1" name="optionvalue" {{if (eq  .Rating.Rating 1)}} selected {{end}}>1</option>
+                    <option value="2" name="optionvalue" {{if (eq .Rating.Rating 2)}} selected{{end}}>2</option>
+                    <option value="3" name="optionvalue" {{if (eq .Rating.Rating 3)}} selected{{end}}>3</option>
+                    <option value="4" name="optionvalue" {{if (eq .Rating.Rating 4)}} selected{{end}}>4</option>
+                    <option value="5" name="optionvalue" {{if (eq .Rating.Rating 5)}} selected{{end}}>5</option>
+                 </select>
+                 <button type="submit" >Rate</button>
+            </form>
+                 {{end}}
+                 {{end}}
+    <h2>{{.Post.TiTle}}</h2>
+    {{.Post.Id}}
+    <div  class="post-img">
+          {{if .Post.Imageurl}}
+       <img
+  src="{{.Post.Imageurl}}"  loading="lazy"  fetchpriority="low"
+  width="800"
+  height="500"/>
+         {{else}}
+         {{end}}
+    </div>
+        {{if .DCExcedded}}
+        <p>you downloaded 4 times.please wait 12 hours for the counter to reset<a href="/about">About</a></p>
+        {{else}}
+      <a href="/download/{{.Post.Id}}">Download</a>
+      {{end}}
+       
+        </div>
+            {{if and .IsAuthenticated .IsActivated}}
+        <form  method= "post"  action="/posts/{{.Post.Id}}" class="commentform">
+                <input type="text" name="comment" minlength="4" required placeholder="Write your comment here...">
+                <button type="submit">Comment</button>
+                </form>
+                {{else}}{{end}}
+            {{if .Post.Comments}}
+                <div class="comments">
+                    {{range .Post.Comments}}
+                                
+                        <div class="comment">
+                        <h4>{{.CUserName}}</h4>
+                        <p>{{.Comment}}</p>
+                        </div>
+                        {{end}}
+                                    </div>
+                        {{else}}
+<p>NO commenst to see.</p>
+{{end}}
+{{end}}

@@ -1,0 +1,18 @@
+
+
+{{define "main"}}  
+
+<div class="users">
+    <h1>Users</h1>
+    <div class="users-list">
+        {{range .Users}}
+        <div class="user-card">
+            <h2>{{.Name}}</h2>
+            <p>Email: {{.Email}}</p>
+
+        </div>
+        {{end}}
+    </div>  
+</div>
+
+{{end}}

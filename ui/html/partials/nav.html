@@ -1,0 +1,21 @@
+{{define "nav"}}
+<nav>
+    <ul>
+        {{if and .IsAuthenticated .IsActivated}}
+        <li><a href="/">Home</a></li>
+        <li><a href="/premium">Premium</a></li>
+         <li><a href="/create">Create Post</a></li>
+                <li><a href="/about">About</a></li>
+
+        {{else  if .IsAuthenticated}}
+        <a href="/activate">Activate my account</a>
+         {{else}}
+         <li><a href="/user/login">Login</a></li>
+         <li><a href="/signup">Register</a></li>
+         <li><a href="/about">About</a></li>
+        {{end}}
+
+        
+    </ul>
+</nav>
+{{end}}

@@ -1,0 +1,15 @@
+{{define "Title"}}User's Search{{end}}
+
+{{define "main"}}
+
+{{if .Users}}
+   {{range .Users}}
+   <div class="user">
+      <a href="/users/{{.Id}}">{{.Name}}</a>
+   </div>
+   {{end}}
+{{else}}
+   <p>No users found.</p>
+{{end}}
+
+{{end}}

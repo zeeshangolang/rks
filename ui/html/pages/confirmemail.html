@@ -1,0 +1,13 @@
+{{define "Title"}}Email confirmation{{end}}
+{{define "main"}}
+
+<form method="Post" action="/AccountActivation">
+    <label for="code">Confirmation Code:</label>
+    {{with .Form.FieldErrors.code}}
+        <div class="error">{{.}}</div>
+    {{end}}
+    <input type="text" id="code" name="code" required>
+    <button type="submit">Confirm Email</button>
+</form>
+
+{{end}}

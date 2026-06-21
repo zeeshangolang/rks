@@ -1,0 +1,45 @@
+
+
+{{define "Title"}}Create Post{{end}}
+{{define "searchbar"}} {{end}}
+
+{{define "main"}}
+<form method="POST" action="/create" class="signup" enctype="multipart/form-data"  id="postForm">
+    <!-- Non-Field Errors -->
+    {{range .Form.NonFieldError}}
+        <p class="error">{{.}}</p> 
+    {{end}}
+
+    <!-- Title Field -->
+    <label>Title</label>
+    {{with .Form.FieldErrors.title}}
+        <p class="error">{{.}}</p>
+    {{end}}
+    <input type="text" name="title" placeholder="Enter title" value="{{.Form.Title}}">
+
+    <!-- Content Field -->
+    <label>Content</label>
+    {{with .Form.FieldErrors.content}}
+        <p class="error">{{.}}</p>
+    {{end}}
+    <textarea name="content" placeholder="Enter content">{{.Form.Content}}</textarea>
+
+    <!-- Category Field -->
+    <label>Category</label>
+    {{with .Form.FieldErrors.category}}
+        <p class="error">{{.}}</p>
+    {{end}}
+    <input type="text" name="category" placeholder="Category" value="{{.Form.Category}}">
+    
+    <label>Image Upload</label>
+    {{with .Form.FieldErrors.imageurl}}
+        <p class="error">{{.}}</p>
+    {{end}}
+    <!-- Note: 'name' must match r.FormFile("myfile") in Go -->
+    <input type="file" name="myfile"  accept="image/jpeg, image/png">
+
+    <input type="file" name="Pdf" accept="application/pdf">
+
+    <button type="submit" id="submitBtn">CREATE POST</button>
+</form>
+{{end}}
