@@ -92,11 +92,13 @@ func main() {
 	flag.StringVar(&cfg.port, "addr", cfg.port, "ADDR")
 
 	// Database configuration
-	if cfg.db.dsn = os.Getenv("DB_DSN"); cfg.db.dsn == "" {
+	if cfg.db.dsn = os.Getenv("DB_DSNS"); cfg.db.dsn == "" {
 		flag.StringVar(&cfg.db.dsn, "dsn", "", "DSN")
 	} else {
 		flag.StringVar(&cfg.db.dsn, "dsn", cfg.db.dsn, "DSN")
 	}
+
+	fmt.Println("db dns -> ", cfg.db.dsn)
 
 	// Parse ints from env with defaults
 	maxOpenConn, _ := strconv.Atoi(os.Getenv("MAX_OPEN_CONN"))
