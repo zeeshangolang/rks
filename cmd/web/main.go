@@ -93,7 +93,7 @@ func main() {
 
 	// Database configuration
 	if cfg.db.dsn = os.Getenv("DB_DSNS"); cfg.db.dsn == "" {
-		flag.StringVar(&cfg.db.dsn, "dsn", "", "DSN")
+		log.Print("cant find db dsn ------------sjs--------")
 	} else {
 		flag.StringVar(&cfg.db.dsn, "dsn", cfg.db.dsn, "DSN")
 	}
