@@ -194,8 +194,10 @@ func main() {
 
 	info := log.New(os.Stdout, "INFO\t", log.Ltime|log.Ldate)
 	Errorlog := log.New(os.Stderr, "ERROR\t", log.Lshortfile)
+	fmt.Print("dbdsn", cfg.db.dsn)
 	db, err := Opendb(&cfg)
 	if err != nil {
+		fmt.Print("dbdsn --> ", cfg.db.dsn)
 		Errorlog.Print(err)
 		return
 	}
