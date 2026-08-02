@@ -152,8 +152,11 @@ func main() {
 	if smtpPort == 0 {
 		smtpPort = 587
 	}
+	fmt.Printf("\n this is smtpport -> %d \n", smtpPort)
 	cfg.smtp.port = smtpPort
 	flag.IntVar(&cfg.smtp.port, "smtp-port", cfg.smtp.port, "port for smtp")
+
+	fmt.Printf("\n this is cfg.smtp.port -> %d\n", cfg.smtp.port)
 
 	cfg.smtp.username = os.Getenv("SMTP_USERNAME")
 	fmt.Println("\nthis is username \n-> ", cfg.smtp.username)
