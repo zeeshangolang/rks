@@ -150,7 +150,7 @@ func main() {
 
 	smtpPort, _ := strconv.Atoi(os.Getenv("SMTP_PORT"))
 	if smtpPort == 0 {
-		smtpPort = 25
+		smtpPort = 587
 	}
 	cfg.smtp.port = smtpPort
 	flag.IntVar(&cfg.smtp.port, "smtp-port", cfg.smtp.port, "port for smtp")
