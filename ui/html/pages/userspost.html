@@ -3,7 +3,7 @@
 {{define "main"}}
 
 {{if .Posts}} 
-     {{range .Posts}}
+     
   
      <table>
           <tr><th>
@@ -13,18 +13,21 @@
                Date
           </th>
      </tr>
-
+{{range .Posts}}
      <tr>
+          
           <td class="thtitle"><a href="/posts/{{.Id}}">{{.TiTle}}</a></td>
           <td>{{humandate .Createdat}}</td>
      </tr>
-          
-     </table>
-   
+            
      {{end}}
+     
      {{else}}
      <p> NO posts from user</p>
      {{end}}
+          
+     </table>
+  
 
 
 {{end}}
