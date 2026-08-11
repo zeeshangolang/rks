@@ -319,3 +319,35 @@ func (m *PostModel) SearchPosts(search string) ([]*Post, error) {
 	return posts, nil
 
 }
+
+func (m *PostModel) PostsByCategory(category string) ([]*Post, error) {
+	stmt := `SELECT posts.id, userid, users.name, title, content, category, imgaddr, 
+	pdffile FROM posts JOIN users ON posts.userid = users.id 
+	WHERE category = $1
+	`
+	rows, err := m.DB.Query(stmt, category)
+	if err != nil {
+		fmt.Print(err)
+		return nil, err
+	}
+	defer rows.Close()
+
+	posts := []*Post{}
+
+	for rows.Next() {
+		s := &Post{}
+		err := rows.Scan(&s.Id, &s.Userid, &s.UserName, &s.TiTle, &s.Content, &s.Category,
+			&s.Imageurl, &s.PdfFile)
+		if err != nil {
+			switch {
+			case err == rows.Err():
+				fmt.Print(err)
+			default:
+				fmt.Print(err)
+			}
+			return nil, err
+		}
+		posts = append(posts, s)
+	}
+	return posts, nil
+}

@@ -40,6 +40,7 @@ func (app *Application) Routes() http.Handler {
 	router.Handler(http.MethodPost, "/posts/:id", ForActiveUSers.ThenFunc(app.MakeComment))
 	router.Handler(http.MethodGet, "/rating/posts/:id", protected.ThenFunc(app.Ratingpage))
 	router.Handler(http.MethodPost, "/rating/posts/:id", protected.ThenFunc(app.Rating))
+	router.Handler(http.MethodGet, "/category/:cat", dynamic.ThenFunc(app.PostsByCategory))
 	// to see the matrics
 	//router.Handler(http.MethodGet, "/debug/var", expvar.Handler())
 

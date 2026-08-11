@@ -17,3 +17,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 });
+document.addEventListener("htmx:beforeHistorySave", function() {
+    // Clear htmx internal cache completely before the URL changes
+    htmx.config.historyCacheSize = 0;
+});

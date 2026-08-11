@@ -1,0 +1,30 @@
+{{define "Title"}}Posts by cat{{end}}
+
+
+
+{{define "main"}} 
+
+{{if .Posts}}
+
+   {{range .Posts}}
+   <div class="post">
+         <a href="/users/{{.Userid}}"> {{.UserName}}</a> ⭐{{.Rating}}<a href="/posts/{{.Id}}"> <p class="title">{{.TiTle}}</p></a>
+      <div class="image">
+         {{if .Imageurl}}
+            <img src="{{.Imageurl}}" alt="Post Image" class="post-image">
+            {{else}}
+            <p>NO image url here --- {{.Imageurl}}</p>
+            {{end}}
+      </div>
+       <p class="content">{{.Content}}</p>
+   </div>   
+      
+        {{end}}
+    {{else}}
+       <p> NO Posts FOUND</p>
+       {{end}}
+     
+
+  
+
+{{end}}

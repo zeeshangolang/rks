@@ -109,6 +109,22 @@ func (app *Application) PostForm(w http.ResponseWriter, r *http.Request) {
 
 }
 
+func (app *Application) PostsByCategory(w http.ResponseWriter, r *http.Request) {
+	param := httprouter.ParamsFromContext(r.Context())
+	val := param.ByName("cat")
+
+	posts, err := app.Posts.PostsByCategory(val)
+	if err != nil {
+		fmt.Printf("error from posts %s", err)
+		return
+	}
+	data := app.NewTemplateData(r)
+	data.Posts = posts
+	data.ShowNav = false
+	app.Render(w, 200, "pbc.html", data)
+
+}
+
 func (app *Application) PostPost(w http.ResponseWriter, r *http.Request) {
 	var form PostForm
 	r.ParseMultipartForm(10 << 20)
@@ -117,6 +133,7 @@ func (app *Application) PostPost(w http.ResponseWriter, r *http.Request) {
 	form.CheckField(validator.Notblank(form.Title), "title", "THIS field must be filled ")
 	form.CheckField(validator.Notblank(form.Content), "content", "THIS field must be filled ")
 	form.CheckField(validator.Notblank(form.Category), "category", "THIS field must be filled ")
+	form.CheckField(validator.PermittedValues(form.Category, "cs", "bio", "maths", "physics"), "category", "not our values")
 	form.CheckField(validator.MaxChar(form.Title, 100), "title", " MUST be less than 100 characters")
 	form.CheckField(validator.MinChar(form.Title, 5), "title", "Must be larger than 5 keys")
 	form.CheckField(validator.MinChar(form.Content, 5), "content", "Must be larger than 5 keys")

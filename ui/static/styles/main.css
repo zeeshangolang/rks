@@ -156,7 +156,7 @@ nav ul > a:hover {
 .maincontainer {
     
     display: grid;
-    grid-template-columns:  5fr 1fr;
+    grid-template-columns: 1fr 5fr ;
     gap: 24px;
     max-width: 1300px;
     margin: 28px auto;
@@ -231,6 +231,19 @@ nav ul > a:hover {
     width: 100%;
     height: 100%;
     
+}
+
+.htmx-indicator{
+    display:none;
+}
+.htmx-request .htmx-indicator{
+    display:inline;
+}
+
+.category{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
 }
 
 /* ===== POSTS GRID ===== */

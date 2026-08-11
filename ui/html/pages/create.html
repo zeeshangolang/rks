@@ -29,7 +29,10 @@
     {{with .Form.FieldErrors.category}}
         <p class="error">{{.}}</p>
     {{end}}
-    <input type="text" name="category" placeholder="Category" value="{{.Form.Category}}">
+    <input type="radio" name="category"  value="cs" {{if (eq .Form.Category `cs`)}} checked {{end}} >Cs
+    <input type="radio" name="category"  value="bio" {{if (eq .Form.Category `bio`)}} checked {{end}} >Bio
+    <input type="radio" name="category"  value="maths" {{if (eq .Form.Category `maths`)}} checked {{end}} >Maths
+    <input type="radio" name="category"  value="physics" {{if (eq .Form.Category `physics`)}} checked {{end}} >Physics
     
     <label>Image Upload</label>
     {{with .Form.FieldErrors.imageurl}}
