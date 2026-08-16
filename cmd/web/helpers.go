@@ -171,3 +171,7 @@ func (app *Application) UploadToSupabase(file multipart.File, filename string) e
 func (app *Application) pasteout(w http.ResponseWriter, r *http.Request) {
 	app.NotFound(w)
 }
+
+func (app *Application) isHtmxRequest(r *http.Request) bool {
+	return r.Header.Get("HX-Request") == "true"
+}

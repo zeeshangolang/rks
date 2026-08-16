@@ -118,10 +118,13 @@ func (app *Application) PostsByCategory(w http.ResponseWriter, r *http.Request) 
 		fmt.Printf("error from posts %s", err)
 		return
 	}
+
 	data := app.NewTemplateData(r)
 	data.Posts = posts
-	data.ShowNav = false
-	app.Render(w, 200, "pbc.html", data)
+
+	data.ShowSearcbar = true
+	data.ShowNav = true
+	app.Render(w, 200, "main.html", data)
 
 }
 

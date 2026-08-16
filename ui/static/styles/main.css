@@ -241,11 +241,19 @@ nav ul > a:hover {
 }
 
 .category{
+
+  height: 200px;
     display: flex;
-    flex-direction: row;
-    justify-content: center;
+    flex-direction: column;
+    justify-content: space-between;
+ 
 }
 
+a{
+  text-decoration: none;
+  list-style: none;
+  color: #1e38b8;
+}
 /* ===== POSTS GRID ===== */
 .posts {
     padding: 0;
